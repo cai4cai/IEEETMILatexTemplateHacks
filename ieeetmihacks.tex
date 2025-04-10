@@ -1,0 +1,114 @@
+% For some reason ieeecolor presents itself as IEEEtran
+% Silence the warning
+\RequirePackage{silence}
+\WarningFilter{latex}{You have requested document class `ieeecolor'}
+
+\documentclass[journal,twoside,web]{ieeecolor}
+\usepackage{tmi}
+\usepackage{graphicx}
+
+% Useful for lorem ipsum purposes only
+%\usepackage[english]{babel}
+%\usepackage{blindtext}
+\usepackage{mwe}
+
+% Fix ieeecolor's \caption
+% See https://tex.stackexchange.com/a/583096/172400
+\usepackage{etoolbox}
+\makeatletter
+\@ifundefined{color@begingroup}%
+  {\let\color@begingroup\relax
+   \let\color@endgroup\relax}{}%
+\def\fix@ieeecolor@hbox#1{%
+  \hbox{\color@begingroup#1\color@endgroup}}
+\patchcmd\@makecaption{\hbox}{\fix@ieeecolor@hbox}{}{\FAILED}
+\patchcmd\@makecaption{\hbox}{\fix@ieeecolor@hbox}{}{\FAILED}
+%
+
+% Allow sufigures with the subcaption package
+% See https://www.michaelshell.org/tex/ieeetran/#:~:text=subcaption
+\WarningFilter{caption}{Unknown document class (or package)}
+
+\makeatletter
+\let\MYcaption\@makecaption
+\makeatother
+\usepackage[font=footnotesize]{subcaption}
+\makeatletter
+\let\@makecaption\MYcaption
+\makeatother
+%
+
+% Define some handy commands
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand\secref{Section~\ref}
+%
+
+% Not sure why this is needed but it is in the official template
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%
+
+% Define the running headings
+\markboth{Submitted to \journalname}
+{T. Vercauteren \MakeLowercase{\textit{et al.}}: IEEE TMI Template Hacks}
+%
+
+% Load hyperref last unless you know better
+% As mentioned in ieeecolor.cls a patch is needed for citations
+\makeatletter
+\let\NAT@parse\undefined
+\makeatother
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+%
+
+\begin{document}
+% Add some further control on the bibliography
+\bstctlcite{IEEEexample:BSTcontrol}
+
+\title{IEEE TMI Template Hacks}
+\author{Tom Vercauteren
+\thanks{This work was supported by some funder.}%
+\thanks{T. Vercauteren is with King's College London (e-mail:\href{mailto:tom.vercauteren@kcl.ac.uk}{tom.vercauteren@kcl.ac.uk}). }%
+}
+
+
+\maketitle
+
+\begin{abstract}
+\blindtext
+\end{abstract}
+
+\begin{IEEEkeywords}
+Keyword 1, keyword 2.
+\end{IEEEkeywords}
+
+\section{Introduction}
+\blindtext[2]
+
+\section{Method}
+\blindmathpaper
+
+\begin{figure}[tbh!]
+\centering
+\includegraphics[width=0.8\linewidth]{example-image}
+\caption{Example Image.\label{fig:example}}
+\end{figure}
+
+\blindtext
+Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Bakas:arXiv:2018} and a link to \figref{fig:example}.
+
+\section{Conclusion}
+\blindtext[3]
+
+% References
+\bibliographystyle{IEEEtran}
+\bibliography{%
+  jn_abbrv,%
+  xampl,% For lorem ipsum only
+  references,
+  ieeebib_settings% Needs to be last
+  }
+ 
+
+\end{document}
