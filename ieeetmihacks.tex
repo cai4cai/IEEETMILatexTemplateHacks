@@ -96,7 +96,7 @@ Keyword 1, keyword 2.
 \end{figure}
 
 \blindtext
-Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Bakas:arXiv:2018} and a link to \figref{fig:example}.
+Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Fidon:PAMI:2024,Bakas:arXiv:2018,Alabi:MedIA:2025} and a link to \figref{fig:example}.
 
 \section{Conclusion}
 \blindtext[3]
@@ -104,10 +104,11 @@ Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Bakas:a
 % References
 \bibliographystyle{IEEEtran}
 \bibliography{%
-  jn_abbrv,%
+  IEEEabrv.bib,% IEEE journal names as provided by the IEEEtran package
+  jn_abbrv,% Other journal names using NLM Title Abbreviation
   xampl,% For lorem ipsum only
-  references,
-  ieeebib_settings% Needs to be last
+  references,% The actual references for this manuscript
+  ieeebib_settings% Settings, needs to be last
   }
  
 
