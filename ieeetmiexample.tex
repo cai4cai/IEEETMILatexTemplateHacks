@@ -6,7 +6,7 @@
 
 % Define the running headings
 \markboth{Submitted to \journalname}
-{T. Vercauteren \MakeLowercase{\textit{et al.}}: IEEE TMI Template Hacks - v2}
+{J. Doe \MakeLowercase{\textit{et al.}}: IEEE TMI Template Hacks - v2}
 %
 
 \begin{document}
@@ -14,9 +14,10 @@
 \bstctlcite{IEEEexample:BSTcontrol}
 
 \title{IEEE TMI Template Hacks - v2}
-\author{Tom Vercauteren
-\thanks{This work was supported by some funder.}%
-\thanks{T. Vercauteren is with King's College London (e-mail:\href{mailto:tom.vercauteren@kcl.ac.uk}{tom.vercauteren@kcl.ac.uk}). }%
+\author{Jane Doe
+\thanks{This work was supported by some funder. 
+More information at \url{https://jane.doe}.}%
+\thanks{J. Doe is with King's College London (e-mail:\href{mailto:jane.doe@kcl.ac.uk}{jane.doe@kcl.ac.uk}). }%
 }
 
 
@@ -33,6 +34,22 @@ Keyword 1, keyword 2.
 \section{Introduction}
 \blindtext[2]
 
+\begin{table}[tbh!]
+\caption{Table to test captions and labels.\label{tab:example}}
+\centering
+\begin{tabular}{|c c c c|} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ 2 & 7 & 78 & 5415 \\
+ 3 & 545 & 778 & 7507 \\
+ 4 & 545 & 18744 & 7560 \\
+ 5 & 88 & 788 & 6344 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{table}
+
 \section{Method}
 \blindmathpaper
 
@@ -43,7 +60,7 @@ Keyword 1, keyword 2.
 \end{figure}
 
 \blindtext
-Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Fidon:PAMI:2024,Bakas:arXiv:2018,Alabi:MedIA:2025} and a link to \figref{fig:example}.
+Add some references~\cite{article-full,inproceedings-full,phdthesis-full,Fidon:PAMI:2024,Bakas:arXiv:2018,Alabi:MedIA:2025}, a link to \figref{fig:example}, and \tabref{tab:example}.
 
 \section{Conclusion}
 \blindtext[3]
