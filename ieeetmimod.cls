@@ -5,7 +5,11 @@
 \usepackage{silence}
 \WarningFilter{latex}{You have requested document class `ieeecolor'}
 
-\ProvidesClass{ieeetmimod}[2025/04/10 v1.0 Patched ieeecolor class for TMI]
+\ProvidesClass{ieeetmimod}[2025/05/06 v1.1 Patched ieeecolor class for TMI]
+
+% Load xcolor before color 
+% See https://tex.stackexchange.com/a/599917/172400
+\RequirePackage{xcolor}
 
 \LoadClass[journal,twoside,web]{ieeecolor}
 \usepackage{tmi}

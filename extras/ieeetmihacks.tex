@@ -3,6 +3,10 @@
 \RequirePackage{silence}
 \WarningFilter{latex}{You have requested document class `ieeecolor'}
 
+% Load xcolor before color 
+% See https://tex.stackexchange.com/a/599917/172400
+\RequirePackage{xcolor}
+
 \documentclass[journal,twoside,web]{ieeecolor}
 \usepackage{tmi}
 \usepackage{graphicx}
